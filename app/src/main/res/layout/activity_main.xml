@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.myquiz.MainActivity">
+
+
+    <Button
+        android:id="@+id/random_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="callPlayActivity"
+        style="@style/quizstandard"
+        android:tag="@string/oanswertag"
+        android:text="@string/randomquestion"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@id/write_answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="callPlayActivity"
+        style="@style/quizstandard"
+        android:tag="@string/wanswertag"
+        android:text="@string/writeanswer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/random_question" />
+
+    <Button
+        android:id="@+id/multiple_choice"
+        style="@style/quizstandard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="callPlayActivity"
+        android:tag="@string/manswertag"
+        android:text="@string/multiplechoice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/write_answer" />
+</android.support.constraint.ConstraintLayout>

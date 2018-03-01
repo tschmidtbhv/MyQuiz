@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="random_question" type="id"/>
+    <item name="write_answer" type="id"/>
+    <item name="multiple_choice" type="id"/>
+</resources>
