@@ -1,11 +1,10 @@
 package com.example.android.myquiz;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.android.myquiz.helper.ExtraTags;
+import com.example.android.myquiz.helper.Config;
 import com.example.android.myquiz.helper.TransitionHelper;
 
 public class ResultActivity extends AppCompatActivity {
@@ -20,7 +19,7 @@ public class ResultActivity extends AppCompatActivity {
 
         if(extras != null) {
             TextView textView = findViewById(R.id.textView);
-            textView.setText(String.valueOf(extras.getInt(ExtraTags.POINTS)));
+            textView.setText(String.valueOf(extras.getInt(Config.POINTS)));
         }
     }
 

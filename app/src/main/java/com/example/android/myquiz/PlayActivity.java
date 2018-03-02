@@ -1,6 +1,7 @@
 package com.example.android.myquiz;
 
 import android.content.Intent;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,10 +9,12 @@ import android.view.View;
 import com.example.android.myquiz.fragments.MultipleChoiceFragment;
 import com.example.android.myquiz.fragments.OneAnswerFragment;
 import com.example.android.myquiz.fragments.WriteAnswerFragment;
-import com.example.android.myquiz.helper.ExtraTags;
+import com.example.android.myquiz.helper.Config;
 import com.example.android.myquiz.helper.TransitionHelper;
 
 public class PlayActivity extends AppCompatActivity {
+
+    int lastFragmentId = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,24 +24,32 @@ public class PlayActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
 
-            int fragmentId = extras.getInt(ExtraTags.VARIANTID);
-            setFragment(getGameVariantFragment(fragmentId));
+            lastFragmentId = extras.getInt(Config.VARIANTID);
+            setFragment(getGameVariantFragment());
         }
 
     }
 
     /**
+     * Display the Question
+     */
+    public void displayQuestion(){
+
+        OneAnswerFragment oneAnswerFragment = (OneAnswerFragment)getSupportFragmentManager().findFragmentByTag(String.valueOf(lastFragmentId));
+        oneAnswerFragment.test();
+    }
+
+    /**
      * Get the given gamevariant Fragment
      *
-     * @param variantId
      * @return android.support.v4.app.Fragment
      */
-    private android.support.v4.app.Fragment getGameVariantFragment(int variantId) {
+    private android.support.v4.app.Fragment getGameVariantFragment() {
 
 
         android.support.v4.app.Fragment fragment = null;
 
-        switch (variantId) {
+        switch (lastFragmentId) {
 
             case R.id.random_question:
                 fragment = new OneAnswerFragment();
@@ -63,8 +74,13 @@ public class PlayActivity extends AppCompatActivity {
      */
     private void setFragment(android.support.v4.app.Fragment fragment) {
 
-        if (fragment != null)
-            getSupportFragmentManager().beginTransaction().add(R.id.fragementHolder, fragment).commit();
+        if (fragment != null) {
+
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.add(R.id.fragementHolder, fragment,String.valueOf(lastFragmentId));
+            fragmentTransaction.commit();
+        }
+
     }
 
     /**
@@ -75,7 +91,7 @@ public class PlayActivity extends AppCompatActivity {
     public void checkAnswerClicked(View view) {
 
         Intent intent = new Intent(PlayActivity.this, ResultActivity.class);
-        intent.putExtra(ExtraTags.POINTS, 240);
+        intent.putExtra(Config.POINTS, 240);
         startActivity(intent);
         TransitionHelper.animateSlideIn(this);
 
