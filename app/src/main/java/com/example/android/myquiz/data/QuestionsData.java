@@ -1,6 +1,8 @@
 package com.example.android.myquiz.data;
 
 import com.example.android.myquiz.R;
+import com.example.android.myquiz.helper.Config;
+import com.example.android.myquiz.helper.QuestionHelper;
 
 import java.util.ArrayList;
 
@@ -11,6 +13,7 @@ import java.util.ArrayList;
 
 public class QuestionsData{
 
+    private int mQuestionType;
     private ArrayList<Question> mQuestions;
 
     public QuestionsData(int questionType){
@@ -24,15 +27,15 @@ public class QuestionsData{
     private void checkQuestionsForType(int questionType) {
 
         switch (questionType) {
-            case R.id.random_question:
+            case Config.ONEANSWER:
                 generateQuestionWithOneAnswer();
                 break;
 
-            case R.id.multiple_choice:
+            case Config.MULTIPLEANSWER:
                 generateQuestionsWithMultipleAnswers();
                 break;
 
-            case R.id.write_answer:
+            case Config.WRITEANSWER:
                 generateQuestionWithWriting();
                 break;
 
@@ -44,7 +47,7 @@ public class QuestionsData{
      */
     private void generateQuestionWithOneAnswer() {
 
-        createQuestion("Welchen Tag haben wir heute", "Montag", "Freitag","Sonntag", new int[]{2,3});
+        createQuestion("Welchen Tag haben wir heute", "Montag", "Freitag","Sonntag", new int[]{3});
 
     }
 
@@ -53,6 +56,7 @@ public class QuestionsData{
      * Create Questions with more than one possible answer
      */
     private void generateQuestionsWithMultipleAnswers() {
+        createQuestion("Welchen Tag haben wir heute", "Montag", "Freitag","Sonntag", new int[]{1,2,3});
 
     }
 
@@ -101,7 +105,7 @@ public class QuestionsData{
                 tempOpt = optC;
             }
 
-            isRightAnswer = checkForRightAnswer(i, indexesOfRightAnswer);
+            isRightAnswer = QuestionHelper.checkForRightAnswer(i, indexesOfRightAnswer);
 
             Answer answer = new Answer(tempOpt, isRightAnswer);
             answerArrayList.add(answer);
@@ -113,20 +117,4 @@ public class QuestionsData{
 
     }
 
-    /**
-     * Check the currentIndex with given indexes of right answers
-     * @param currentIndex the current index
-     * @param indexesOfRightAnswer int array of right indexes
-     * @return boolean
-     */
-
-    private boolean checkForRightAnswer(int currentIndex, int[] indexesOfRightAnswer) {
-
-        for(int index : indexesOfRightAnswer) {
-            if(index == currentIndex) {
-                return true;
-            }
-        }
-        return false;
-    }
 }

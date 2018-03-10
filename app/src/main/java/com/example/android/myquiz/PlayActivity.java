@@ -1,11 +1,12 @@
 package com.example.android.myquiz;
 
-import android.content.Intent;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
+import com.example.android.myquiz.Interfaces.QuestionInterface;
 import com.example.android.myquiz.fragments.MultipleChoiceFragment;
 import com.example.android.myquiz.fragments.OneAnswerFragment;
 import com.example.android.myquiz.fragments.WriteAnswerFragment;
@@ -27,16 +28,6 @@ public class PlayActivity extends AppCompatActivity {
             lastFragmentId = extras.getInt(Config.VARIANTID);
             setFragment(getGameVariantFragment());
         }
-
-    }
-
-    /**
-     * Display the Question
-     */
-    public void displayQuestion(){
-
-        OneAnswerFragment oneAnswerFragment = (OneAnswerFragment)getSupportFragmentManager().findFragmentByTag(String.valueOf(lastFragmentId));
-        oneAnswerFragment.test();
     }
 
     /**
@@ -80,7 +71,6 @@ public class PlayActivity extends AppCompatActivity {
             fragmentTransaction.add(R.id.fragementHolder, fragment,String.valueOf(lastFragmentId));
             fragmentTransaction.commit();
         }
-
     }
 
     /**
@@ -90,11 +80,18 @@ public class PlayActivity extends AppCompatActivity {
      */
     public void checkAnswerClicked(View view) {
 
-        Intent intent = new Intent(PlayActivity.this, ResultActivity.class);
-        intent.putExtra(Config.POINTS, 240);
-        startActivity(intent);
-        TransitionHelper.animateSlideIn(this);
+        android.support.v4.app.Fragment fragment = getSupportFragmentManager().findFragmentByTag(String.valueOf(lastFragmentId));
+        QuestionInterface questionInterface = (QuestionInterface)fragment;
 
+        boolean isRight = questionInterface.checkGivenAnswer();
+
+        if(isRight){
+            Toast.makeText(this,"You choose the right answer", Toast.LENGTH_SHORT).show();
+            questionInterface.nextQuestion();
+            //TODO Count Points (if no next question: Use Config.POINTS for Extras)
+        }else {
+            Toast.makeText(this,"Sorry try again", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

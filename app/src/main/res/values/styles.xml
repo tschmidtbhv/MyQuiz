@@ -6,12 +6,18 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
     </style>
 
     <style name="quizstandard" parent="AppTheme">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">@dimen/margin</item>
+    </style>
+
+    <style name="quizbuttons" parent="quizstandard">
+        <item name="android:layout_width">@dimen/menu_button_width</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 
 </resources>

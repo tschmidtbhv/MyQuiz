@@ -2,4 +2,8 @@
 <resources>
     <dimen name="margin">16dp</dimen>
     <dimen name="padding">16dp</dimen>
+
+    <!-- Menu Buttons -->
+    <dimen name="menu_button_width">160dp</dimen>
+
 </resources>

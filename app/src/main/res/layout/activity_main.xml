@@ -9,10 +9,8 @@
 
     <Button
         android:id="@+id/random_question"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/quizbuttons"
         android:onClick="callPlayActivity"
-        style="@style/quizstandard"
         android:tag="@string/oanswertag"
         android:text="@string/randomquestion"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,10 +19,8 @@
 
     <Button
         android:id="@id/write_answer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/quizbuttons"
         android:onClick="callPlayActivity"
-        style="@style/quizstandard"
         android:tag="@string/wanswertag"
         android:text="@string/writeanswer"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,12 +28,25 @@
 
     <Button
         android:id="@+id/multiple_choice"
-        style="@style/quizstandard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/quizbuttons"
         android:onClick="callPlayActivity"
         android:tag="@string/manswertag"
         android:text="@string/multiplechoice"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/write_answer" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/abeezee"
+        android:text="@string/app_name"
+        android:textSize="64sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
