@@ -4,7 +4,6 @@ package com.example.android.myquiz.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +28,7 @@ public class OneAnswerFragment extends Fragment implements QuestionInterface{
     private ArrayList<CompoundButton> radioButtonArrayList;
 
     //the current question "index"
-    private int currentQuestionIndex;
+    private int currentQuestionIndex = 0;
 
     private QuestionsData questionsData;
 
@@ -56,8 +55,6 @@ public class OneAnswerFragment extends Fragment implements QuestionInterface{
      * Set the Question/Answer to it´s View
      */
     private void setQuestionToView(){
-
-        currentQuestionIndex = 0;
 
         //Create a QuestionsData ArrayList / Get the Question
         questionsData = new QuestionsData(Config.ONEANSWER);
@@ -90,9 +87,16 @@ public class OneAnswerFragment extends Fragment implements QuestionInterface{
     }
 
     @Override
-    public void nextQuestion() {
-        //TODO load next question
-        Log.v(OneAnswerFragment.class.getSimpleName(), "nextQuestion()");
+    public boolean canLoadNextQuestion() {
+
+        if((currentQuestionIndex + 1) < questionsData.getQuestions().size()){
+            currentQuestionIndex++;
+            setQuestionToView();
+        }else {
+            return false;
+        }
+
+        return true;
     }
 
 }

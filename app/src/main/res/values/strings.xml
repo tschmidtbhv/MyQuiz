@@ -1,16 +1,9 @@
 <resources>
     <string name="app_name">MyQuiz</string>
 
-    <!-- Button Tags -->
-    <string name="oanswertag">oneanswer</string>
-    <string name="wanswertag">writeanswer</string>
-    <string name="manswertag">multipleanswer</string>
-
-
-    <string name="randomquestion">Random Question</string>
+    <string name="randomquestion">One Answer</string>
     <string name="writeanswer">Write the answer</string>
     <string name="multiplechoice">Multiple choice</string>
     <string name="checkanswer">Check answer</string>
-
-
+    <string name="choose_your_game">Choose your Game:</string>
 </resources>

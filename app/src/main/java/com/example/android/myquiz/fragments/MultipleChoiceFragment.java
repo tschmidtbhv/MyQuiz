@@ -87,8 +87,9 @@ public class MultipleChoiceFragment extends Fragment implements QuestionInterfac
     }
 
     @Override
-    public void nextQuestion() {
+    public boolean canLoadNextQuestion() {
         //TODO load next question
         Log.v(MultipleChoiceFragment.class.getSimpleName(), "nextQuestion()");
+        return false;
     }
 }

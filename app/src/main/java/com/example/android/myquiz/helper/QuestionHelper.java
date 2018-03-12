@@ -17,7 +17,7 @@ public class QuestionHelper {
 
     /**
      * Check the currentIndex with given indexes of right answers
-     *
+     * Is used to set isRight value to the answer
      * @param currentIndex         the current index
      * @param indexesOfRightAnswer int array of right indexes
      * @return boolean
@@ -66,5 +66,27 @@ public class QuestionHelper {
 
 
         return isRight;
+    }
+
+    /**
+     * Check the right answer with the given one
+     * @param givenAnswer
+     * @param question
+     * @return
+     */
+    public static boolean checkWritenAnswer(String givenAnswer, Question question){
+
+        String rightAnswer = question.getAnswers().get(0).getAnswer();
+
+        //Convert both Strings to uppercase
+        rightAnswer = rightAnswer.toUpperCase();
+        givenAnswer = givenAnswer.toUpperCase();
+
+        //Check the right answer equals the given
+        if(rightAnswer.equals(givenAnswer)){
+            return true;
+        }
+
+        return false;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.android.myquiz;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import com.example.android.myquiz.helper.TransitionHelper;
 public class PlayActivity extends AppCompatActivity {
 
     int lastFragmentId = 0;
+    int gamePoint = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,9 +68,8 @@ public class PlayActivity extends AppCompatActivity {
     private void setFragment(android.support.v4.app.Fragment fragment) {
 
         if (fragment != null) {
-
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.add(R.id.fragementHolder, fragment,String.valueOf(lastFragmentId));
+            fragmentTransaction.replace(R.id.fragementHolder, fragment,String.valueOf(lastFragmentId));
             fragmentTransaction.commit();
         }
     }
@@ -80,15 +81,20 @@ public class PlayActivity extends AppCompatActivity {
      */
     public void checkAnswerClicked(View view) {
 
-        android.support.v4.app.Fragment fragment = getSupportFragmentManager().findFragmentByTag(String.valueOf(lastFragmentId));
-        QuestionInterface questionInterface = (QuestionInterface)fragment;
+        QuestionInterface questionInterface = (QuestionInterface)getSupportFragmentManager().findFragmentByTag(String.valueOf(lastFragmentId));
 
         boolean isRight = questionInterface.checkGivenAnswer();
 
         if(isRight){
             Toast.makeText(this,"You choose the right answer", Toast.LENGTH_SHORT).show();
-            questionInterface.nextQuestion();
-            //TODO Count Points (if no next question: Use Config.POINTS for Extras)
+            gamePoint += 25;
+            if(!questionInterface.canLoadNextQuestion()){
+                //There are no more questions. Redirekt to resultpage
+                Intent intent = new Intent(PlayActivity.this,ResultActivity.class);
+                intent.putExtra(Config.POINTS, gamePoint);
+                startActivity(intent);
+            }
+
         }else {
             Toast.makeText(this,"Sorry try again", Toast.LENGTH_SHORT).show();
         }

@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 public class QuestionsData{
 
-    private int mQuestionType;
     private ArrayList<Question> mQuestions;
 
     public QuestionsData(int questionType){
@@ -47,8 +46,9 @@ public class QuestionsData{
      */
     private void generateQuestionWithOneAnswer() {
 
-        createQuestion("Welchen Tag haben wir heute", "Montag", "Freitag","Sonntag", new int[]{3});
-
+        for(int i = 0; i < 5; i++) {
+            createQuestion("Welchen Tag haben wir heute " + (i +1), "Montag ", "Freitag", "Sonntag", new int[]{3});
+        }
     }
 
 
@@ -57,14 +57,14 @@ public class QuestionsData{
      */
     private void generateQuestionsWithMultipleAnswers() {
         createQuestion("Welchen Tag haben wir heute", "Montag", "Freitag","Sonntag", new int[]{1,2,3});
-
     }
 
     /**
      * Generate Question for writing
+     * Just add one possible answer and index
      */
     private void generateQuestionWithWriting() {
-
+        createQuestion("Welchen Tag haben wir heute", "Montag", null,null, new int[]{2});
     }
 
     /**
@@ -112,7 +112,7 @@ public class QuestionsData{
         }
 
         question.setAnswers(answerArrayList);
-        mQuestions = new ArrayList<Question>();
+        if(mQuestions == null) mQuestions = new ArrayList<Question>();
         mQuestions.add(question);
 
     }

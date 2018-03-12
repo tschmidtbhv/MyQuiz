@@ -6,6 +6,6 @@ package com.example.android.myquiz.Interfaces;
 
 public interface QuestionInterface {
 
-    public boolean checkGivenAnswer();
-    public void nextQuestion();
+    boolean checkGivenAnswer();
+    boolean canLoadNextQuestion();
 }
