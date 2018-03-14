@@ -12,7 +12,11 @@ import com.example.android.myquiz.fragments.MultipleChoiceFragment;
 import com.example.android.myquiz.fragments.OneAnswerFragment;
 import com.example.android.myquiz.fragments.WriteAnswerFragment;
 import com.example.android.myquiz.helper.Config;
-import com.example.android.myquiz.helper.TransitionHelper;
+
+import static com.example.android.myquiz.helper.Config.LASTPOINTS;
+import static com.example.android.myquiz.helper.Config.LASTQUESTION;
+import static com.example.android.myquiz.helper.Config.LASTSELECTION;
+import static com.example.android.myquiz.helper.Config.LASTTEXT;
 
 public class PlayActivity extends AppCompatActivity {
 
@@ -101,8 +105,47 @@ public class PlayActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        if(savedInstanceState != null) {
+
+
+            QuestionInterface questionInterface = (QuestionInterface)getSupportFragmentManager().findFragmentByTag(String.valueOf(lastFragmentId));
+            questionInterface.loadLastQuestionIndex(savedInstanceState.getInt(LASTQUESTION)); //Load last question with last Index
+            gamePoint = savedInstanceState.getInt(LASTPOINTS); //Restore Gamepoints
+
+            if (lastFragmentId == R.id.write_answer) {
+                //Restore Text to TextView
+                WriteAnswerFragment writeAnswerFragment = (WriteAnswerFragment)questionInterface;
+                writeAnswerFragment.setLastText(savedInstanceState.getString(LASTTEXT));
+            }else {
+                //Restore last selection
+                questionInterface.setLastSelections(savedInstanceState.getIntegerArrayList(LASTSELECTION));
+            }
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        QuestionInterface questionInterface = (QuestionInterface)getSupportFragmentManager().findFragmentByTag(String.valueOf(lastFragmentId));
+        outState.putInt(LASTQUESTION, questionInterface.getLastQuestionIndex()); //Save last questionIndex
+        outState.putInt(LASTPOINTS, gamePoint); //Save Gamepoints
+
+        if(lastFragmentId == R.id.write_answer){
+            WriteAnswerFragment writeAnswerFragment = (WriteAnswerFragment)questionInterface;
+            outState.putString(LASTTEXT,writeAnswerFragment.getInputText());
+        }else {
+            //Save last selection
+            outState.putIntegerArrayList(LASTSELECTION, questionInterface.getLastSelections());
+        }
+    }
+
+
+    @Override
     public void onBackPressed() {
         super.onBackPressed();
-        TransitionHelper.animateSlideOut(this);
     }
 }

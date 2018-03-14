@@ -20,7 +20,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="quizTextInsideCardView" parent="quizstandard">
+    <style name="quizTextInsideCardView" parent="quiztitle">
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 

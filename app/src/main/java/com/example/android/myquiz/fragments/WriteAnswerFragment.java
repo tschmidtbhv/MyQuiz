@@ -30,11 +30,6 @@ public class WriteAnswerFragment extends Fragment implements QuestionInterface{
 
     QuestionsData questionsData;
 
-    public WriteAnswerFragment() {
-        // Required empty public constructor
-    }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -45,16 +40,16 @@ public class WriteAnswerFragment extends Fragment implements QuestionInterface{
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        setQuestionToView();
+        setQuestionToView(currentQuestionIndex);
     }
 
-    private void setQuestionToView() {
+    private void setQuestionToView(int questionIndex) {
 
         questionsData = new QuestionsData(Config.WRITEANSWER);
 
         if(questionsData.getQuestions().size() > 0) {
 
-            Question question = questionsData.getQuestions().get(currentQuestionIndex);
+            Question question = questionsData.getQuestions().get(questionIndex);
             TextView questionTextView = getView().findViewById(R.id.question);
             questionTextView.setText(question.getQuestion());
         }
@@ -68,6 +63,55 @@ public class WriteAnswerFragment extends Fragment implements QuestionInterface{
 
     @Override
     public boolean canLoadNextQuestion() {
-        return false;
+        if((currentQuestionIndex + 1) < questionsData.getQuestions().size()){
+            currentQuestionIndex++;
+            setQuestionToView(currentQuestionIndex);
+        }else {
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public int getLastQuestionIndex() {
+        return currentQuestionIndex;
+    }
+
+    @Override
+    public void loadLastQuestionIndex(int questionIndex) {
+        currentQuestionIndex = questionIndex;
+        setQuestionToView(questionIndex);
+    }
+
+    /**
+     * Returns the String from TextView
+     *
+     * @return inputString
+     */
+    public String getInputText(){
+
+        TextView answerTextView = getView().findViewById(R.id.answerText);
+        String inputText = answerTextView.getText().toString();
+        return inputText;
+    }
+
+    public void setLastText(String lastText) {
+        TextView textView = getView().findViewById(R.id.answerText);
+        textView.setText(lastText);
+    }
+
+    /**
+     * WritenAnswerFragment does not have a selection. It returns null
+     * @return
+     */
+    @Override
+    public ArrayList<Integer> getLastSelections() {
+        return null;
+    }
+
+    @Override
+    public void setLastSelections(ArrayList<Integer> integerArrayList) {
+
     }
 }

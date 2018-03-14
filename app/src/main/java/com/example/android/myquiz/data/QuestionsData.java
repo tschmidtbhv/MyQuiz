@@ -56,7 +56,9 @@ public class QuestionsData{
      * Create Questions with more than one possible answer
      */
     private void generateQuestionsWithMultipleAnswers() {
-        createQuestion("Welchen Tag haben wir heute", "Montag", "Freitag","Sonntag", new int[]{1,2,3});
+        for(int i = 0; i < 5; i++) {
+            createQuestion("Welchen Tag haben wir heute " + (i +1), "Montag ", "Freitag", "Sonntag", new int[]{3});
+        }
     }
 
     /**
@@ -64,7 +66,8 @@ public class QuestionsData{
      * Just add one possible answer and index
      */
     private void generateQuestionWithWriting() {
-        createQuestion("Welchen Tag haben wir heute", "Montag", null,null, new int[]{2});
+        createQuestion("Welchen Tag haben wir heute ?", "Montag");
+        createQuestion("Welchen Tag haben wir heute 1 ?", "Montag1");
     }
 
     /**
@@ -76,6 +79,11 @@ public class QuestionsData{
         if(mQuestions == null)return mQuestions = new ArrayList<Question>();
 
         return mQuestions;
+    }
+
+
+    private void createQuestion(String question, String answer) {
+        createQuestion(question, answer, null, null, null);
     }
 
     /**
@@ -105,7 +113,9 @@ public class QuestionsData{
                 tempOpt = optC;
             }
 
-            isRightAnswer = QuestionHelper.checkForRightAnswer(i, indexesOfRightAnswer);
+            if(indexesOfRightAnswer != null) {
+                isRightAnswer = QuestionHelper.checkForRightAnswer(i, indexesOfRightAnswer);
+            }
 
             Answer answer = new Answer(tempOpt, isRightAnswer);
             answerArrayList.add(answer);

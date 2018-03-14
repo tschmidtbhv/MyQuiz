@@ -13,4 +13,8 @@ public class Config {
     public final static int MULTIPLEANSWER = 2;
     public final static int WRITEANSWER = 3;
 
+    public final static String LASTTEXT = "LASTTEXT";
+    public final static String LASTQUESTION = "LASTQUESTION";
+    public final static String LASTPOINTS = "LASTPOINTS";
+    public final static String LASTSELECTION = "LASTSELECTION";
 }

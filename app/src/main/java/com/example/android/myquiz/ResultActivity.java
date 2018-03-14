@@ -14,12 +14,17 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-
+        //Get Intent extras (Used for points)
         Bundle extras = getIntent().getExtras();
 
         if(extras != null) {
-            TextView textView = findViewById(R.id.textView);
-            textView.setText(String.valueOf(extras.getInt(Config.POINTS)));
+
+            //Get the resource string and but the points in it
+            String message = getResources().getString(R.string.you_got_point,extras.getInt(Config.POINTS));
+
+            //Set the text with points
+            TextView textView = findViewById(R.id.pointsTextView);
+            textView.setText(message);
         }
     }
 
@@ -27,6 +32,7 @@ public class ResultActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
+        //Clear the Stack go to MainActivity
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);

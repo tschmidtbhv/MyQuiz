@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.android.myquiz.helper.Config;
-import com.example.android.myquiz.helper.TransitionHelper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +20,5 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(Config.VARIANTID, view.getId());
 
         startActivity(intent);
-        TransitionHelper.animateSlideIn(this);
     }
 }

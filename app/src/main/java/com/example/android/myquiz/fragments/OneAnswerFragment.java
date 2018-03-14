@@ -4,11 +4,13 @@ package com.example.android.myquiz.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.android.myquiz.Interfaces.QuestionInterface;
@@ -32,10 +34,6 @@ public class OneAnswerFragment extends Fragment implements QuestionInterface{
 
     private QuestionsData questionsData;
 
-    public OneAnswerFragment() {
-        setRetainInstance(true);
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -47,18 +45,18 @@ public class OneAnswerFragment extends Fragment implements QuestionInterface{
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        setQuestionToView();
+        setQuestionToView(currentQuestionIndex);
     }
 
     /**
      * Set the Question/Answer to it´s View
      */
-    private void setQuestionToView(){
+    private void setQuestionToView(int questionIndex){
+
 
         //Create a QuestionsData ArrayList / Get the Question
         questionsData = new QuestionsData(Config.ONEANSWER);
-        Question question = questionsData.getQuestions().get(currentQuestionIndex);
+        Question question = questionsData.getQuestions().get(questionIndex);
 
         //Get the view reference
         TextView questionTextView = (TextView)getView().findViewById(R.id.question);
@@ -80,6 +78,10 @@ public class OneAnswerFragment extends Fragment implements QuestionInterface{
 
     }
 
+    private void resetSelection(){
+        RadioGroup radioGroup = getView().findViewById(R.id.radioGroup);
+        radioGroup.clearCheck();
+    }
 
     @Override
     public boolean checkGivenAnswer() {
@@ -91,7 +93,8 @@ public class OneAnswerFragment extends Fragment implements QuestionInterface{
 
         if((currentQuestionIndex + 1) < questionsData.getQuestions().size()){
             currentQuestionIndex++;
-            setQuestionToView();
+            resetSelection(); //Reset the selection
+            setQuestionToView(currentQuestionIndex);
         }else {
             return false;
         }
@@ -99,4 +102,40 @@ public class OneAnswerFragment extends Fragment implements QuestionInterface{
         return true;
     }
 
+    @Override
+    public int getLastQuestionIndex() {
+        return currentQuestionIndex;
+    }
+
+    @Override
+    public void loadLastQuestionIndex(int questionIndex) {
+        currentQuestionIndex = questionIndex;
+        setQuestionToView(questionIndex);
+    }
+
+    /**
+     * Add the index for the selected CompoundButton
+     * @return ArrayList<Integer> all seletions of CompoundButton
+     */
+    @Override
+    public ArrayList<Integer> getLastSelections() {
+        ArrayList<Integer> integerArrayList = new ArrayList<>();
+        for(int i = 0; i < radioButtonArrayList.size(); i++) {
+            CompoundButton compoundButton = radioButtonArrayList.get(i);
+            if(compoundButton.isChecked())integerArrayList.add(i);
+        }
+        return integerArrayList;
+    }
+
+    /**
+     * Set the selection for CompoundButton
+     * @param integerArrayList
+     */
+    @Override
+    public void setLastSelections(ArrayList<Integer> integerArrayList) {
+        for(Integer selectedIndex: integerArrayList){
+            CompoundButton compoundButton =  radioButtonArrayList.get(selectedIndex);
+            compoundButton.setChecked(true);
+        }
+    }
 }
