@@ -99,8 +99,8 @@
 
     <string name="qmul7">Which big waters / lakes surround Europe?</string>
     <string name="amul7a1">North Sea ISRIGHT</string>
-    <string name="amul7a2">South Atlantic ISRIGHT</string>
-    <string name="amul7a3">Mediterranean Sea</string>
+    <string name="amul7a2">South Atlantic </string>
+    <string name="amul7a3">Mediterranean Sea ISRIGHT</string>
 
     <string name="qmul8">What is the biggest shark on earth?</string>
     <string name="amul8a1">Whale shark ISRIGHT</string>
