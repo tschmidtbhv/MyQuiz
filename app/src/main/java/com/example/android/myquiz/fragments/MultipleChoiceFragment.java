@@ -3,8 +3,6 @@ package com.example.android.myquiz.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,27 +10,16 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
-import com.example.android.myquiz.Interfaces.QuestionInterface;
 import com.example.android.myquiz.R;
 import com.example.android.myquiz.data.Question;
-import com.example.android.myquiz.data.QuestionsData;
 import com.example.android.myquiz.helper.Config;
-import com.example.android.myquiz.helper.QuestionHelper;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class MultipleChoiceFragment extends Fragment implements QuestionInterface {
 
-    private ArrayList<CompoundButton> checkBoxArrayList;
+public class MultipleChoiceFragment extends QuizSelectionFragment {
 
-    //the current question "index"
-    private int currentQuestionIndex = 0;
-
-    private QuestionsData questionsData;
-
+    private ArrayList<CompoundButton> compoundButtonArrayList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,16 +31,12 @@ public class MultipleChoiceFragment extends Fragment implements QuestionInterfac
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        setQuestionToView(currentQuestionIndex);
+        setQuestionToView();
     }
 
-    private void setQuestionToView(int questionIndex) {
+    public void setQuestionToView() {
 
-        if(checkBoxArrayList != null) resetSelection(); //Reset the selection
-
-        //Create a QuestionsData ArrayList / Get the Question
-        questionsData = new QuestionsData(Config.MULTIPLEANSWER);
-        Question question = questionsData.getQuestions().get(questionIndex);
+        Question question = loadQuestion(Config.MULTIPLEANSWER);
 
         //Get the view reference
         TextView questionTextView = (TextView) getView().findViewById(R.id.question);
@@ -68,71 +51,26 @@ public class MultipleChoiceFragment extends Fragment implements QuestionInterfac
         checkBox3.setText(question.getAnswers().get(2).getAnswer());
 
         //Add the Checkboxes to ArrayList
-        checkBoxArrayList = new ArrayList<>();
-        checkBoxArrayList.add(checkBox1);
-        checkBoxArrayList.add(checkBox2);
-        checkBoxArrayList.add(checkBox3);
+        compoundButtonArrayList = new ArrayList<>();
+        compoundButtonArrayList.add(checkBox1);
+        compoundButtonArrayList.add(checkBox2);
+        compoundButtonArrayList.add(checkBox3);
+
+        setCompoundButtonArrayList(compoundButtonArrayList);
     }
 
-    private void resetSelection(){
-        for(CompoundButton compoundButton: checkBoxArrayList){
+    /**
+     * Reset the checkbox selection
+     */
+    public void resetSelectionOrTextView() {
+        for (CompoundButton compoundButton : compoundButtonArrayList) {
             compoundButton.setChecked(false);
         }
     }
 
-    @Override
+
     public boolean checkGivenAnswer() {
-        return QuestionHelper.checkGivenAnswer(currentQuestionIndex, questionsData, checkBoxArrayList);
+        return super.checkGivenAnswer(QuizFragment.ISSELECTEDANSWER, null, compoundButtonArrayList);
     }
 
-    @Override
-    public boolean canLoadNextQuestion() {
-
-        if((currentQuestionIndex + 1) < questionsData.getQuestions().size()){
-            currentQuestionIndex++;
-            setQuestionToView(currentQuestionIndex);
-        }else {
-            return false;
-        }
-
-        return true;
-    }
-
-    @Override
-    public int getLastQuestionIndex() {
-        return currentQuestionIndex;
-    }
-
-    @Override
-    public void loadLastQuestionIndex(int questionIndex) {
-        currentQuestionIndex = questionIndex;
-        setQuestionToView(questionIndex);
-    }
-
-
-    /**
-     * Add the index for the selected CompoundButton
-     * @return ArrayList<Integer> all seletions of CompoundButton
-     */
-    @Override
-    public ArrayList<Integer> getLastSelections() {
-        ArrayList<Integer> integerArrayList = new ArrayList<>();
-        for(int i = 0; i < checkBoxArrayList.size(); i++) {
-            CompoundButton compoundButton = checkBoxArrayList.get(i);
-            if(compoundButton.isChecked())integerArrayList.add(i);
-        }
-        return integerArrayList;
-    }
-
-    /**
-     * Set the selection for CompoundButton
-     * @param integerArrayList
-     */
-    @Override
-    public void setLastSelections(ArrayList<Integer> integerArrayList) {
-        for(Integer selectedIndex: integerArrayList){
-            CompoundButton compoundButton =  checkBoxArrayList.get(selectedIndex);
-            compoundButton.setChecked(true);
-        }
-    }
 }

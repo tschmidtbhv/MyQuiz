@@ -8,10 +8,6 @@ import java.util.ArrayList;
 
 public interface QuestionInterface {
 
-    boolean checkGivenAnswer();
-    boolean canLoadNextQuestion();
-    int getLastQuestionIndex();
-    void loadLastQuestionIndex(int questionIndex);
     ArrayList<Integer> getLastSelections();
     void setLastSelections(ArrayList<Integer> integerArrayList);
 }

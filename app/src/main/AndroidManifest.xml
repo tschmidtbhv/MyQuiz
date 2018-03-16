@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ResultActivity" />
-        <activity android:name=".PlayActivity"/>
+        <activity android:name=".PlayActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

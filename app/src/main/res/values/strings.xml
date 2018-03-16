@@ -10,5 +10,143 @@
     <string name="points">Points</string>
     <string name="congratulation">Congratulation</string>
     <string name="congratulation_contentDescription">An Image that shows congratulation to the user</string>
+    <string name="sendmail">Send Email</string>
+    <string name="mail_text">Hello, I played %s and got %d points!! Can you get more points?</string>
+
+    <!-- Questions and Answer for one -->
+
+    <string name="qone1">What is the capital of France?</string>
+    <string name="aone1a1">Rom</string>
+    <string name="aone1a2">Berlin</string>
+    <string name="aone1a3">Paris ISRIGHT</string>
+
+    <string name="qone2">Which operating system is from Apple?</string>
+    <string name="aone2a1">Android</string>
+    <string name="aone2a2">iOS ISRIGHT</string>
+    <string name="aone2a3">Linux</string>
+
+    <string name="qone3">How many kidneys does a person normally have?</string>
+    <string name="aone3a1">2 ISRIGHT</string>
+    <string name="aone3a2">6</string>
+    <string name="aone3a3">1</string>
+
+    <string name="qone4">What is the capital of Bavaria?</string>
+    <string name="aone4a1">Munich ISRIGHT</string>
+    <string name="aone4a2">Berlin</string>
+    <string name="aone4a3">Erfurt</string>
+
+    <string name="qone5">How long is a marathon?</string>
+    <string name="aone5a1">10 Kilometer</string>
+    <string name="aone5a2">42,195 Kilometer ISRIGHT</string>
+    <string name="aone5a3">60 Kilometer</string>
+
+    <string name="qone6">How high is the highest mountain in Germany "Zugspitze"?</string>
+    <string name="aone6a1">2.962 m ISRIGHT</string>
+    <string name="aone6a2">1.215 m</string>
+    <string name="aone6a3">3.005 m</string>
+
+    <string name="qone7">What is the second planet in our solar system?</string>
+    <string name="aone7a1">Earth</string>
+    <string name="aone7a2">Jupiter</string>
+    <string name="aone7a3">Venus ISRIGHT</string>
+
+    <string name="qone8">Which company was founded by Sergey Brin and Larry Page?</string>
+    <string name="aone8a1">Facebook</string>
+    <string name="aone8a2">Apple</string>
+    <string name="aone8a3">Google ISRIGHT</string>
+
+    <string name="qone9">The animated Simpsons family lives in which city?</string>
+    <string name="aone9a1">Springfield ISRIGHT</string>
+    <string name="aone9a2">Rom</string>
+    <string name="aone9a3">London</string>
+
+    <string name="qone10">What was the name of the first president of the USA?</string>
+    <string name="aone10a1">George Washington ISRIGHT</string>
+    <string name="aone10a2">Denzel Washington</string>
+    <string name="aone10a3">George Bush</string>
+
+
+    <!-- MULTI -->
+    <string name="qmul1">Which famous athletes come from Germany?</string>
+    <string name="amul1a1">Katharina Witt ISRIGHT</string>
+    <string name="amul1a2">Serena Williams</string>
+    <string name="amul1a3">Steffi Graf  ISRIGHT</string>
+
+    <string name="qmul2">Which rivers flow through Europe?</string>
+    <string name="amul2a1">Nil</string>
+    <string name="amul2a2">Elbe ISRIGHT</string>
+    <string name="amul2a3">Donau ISRIGHT</string>
+
+    <string name="qmul3">What are the main characters in Harry Potter?</string>
+    <string name="amul3a1">Daniel Radcliffe ISRIGHT</string>
+    <string name="amul3a2">Emma Watson ISRIGHT</string>
+    <string name="amul3a3">Emma Thompson</string>
+
+    <string name="qmul4">Which countries border Germany?</string>
+    <string name="amul4a1">France ISRIGHT</string>
+    <string name="amul4a2">Turkey</string>
+    <string name="amul4a3">Czech ISRIGHT</string>
+
+    <string name="qmul5">Which planets are in our solar system?</string>
+    <string name="amul5a1">Saturn ISRIGHT</string>
+    <string name="amul5a2">Neptune ISRIGHT</string>
+    <string name="amul5a3">Mars ISRIGHT</string>
+
+    <string name="qmul6">Which of these animals lives in saltwater?</string>
+    <string name="amul6a1">Clownfish ISRIGHT</string>
+    <string name="amul6a2">Sea horse ISRIGHT</string>
+    <string name="amul6a3">Trout</string>
+
+    <string name="qmul7">Which big waters / lakes surround Europe?</string>
+    <string name="amul7a1">North Sea ISRIGHT</string>
+    <string name="amul7a2">South Atlantic ISRIGHT</string>
+    <string name="amul7a3">Mediterranean Sea</string>
+
+    <string name="qmul8">Which presidents ruled in the US?</string>
+    <string name="amul8a1">North Sea ISRIGHT</string>
+    <string name="amul8a2">South Atlantic </string>
+    <string name="amul8a3">Mediterranean Sea ISRIGHT</string>
+
+    <string name="qmul9">Which presidents ruled in the US?</string>
+    <string name="amul9a1">Roman Herzog</string>
+    <string name="amul9a2">Barack Obama ISRIGHT</string>
+    <string name="amul9a3">John F. Kennedy ISRIGHT</string>
+
+    <string name="qmul10">The answer to life, universe and everything?</string>
+    <string name="amul10a1">Drink coffee</string>
+    <string name="amul10a2">42 ISRIGHT</string>
+    <string name="amul10a3">Be happy</string>
+
+    <!-- Questions and Answer for writing -->
+    <string name="qwri1">How many letters does the German alphabet have?</string>
+    <string name="awri1a1">26</string>
+
+    <string name="qwri2">How many days does 1 year have?</string>
+    <string name="awri2a1">365</string>
+
+    <string name="qwri3">Which company do you associate with Steve Jobs?</string>
+    <string name="awri3a1">Apple</string>
+
+    <string name="qwri4">Capital of Germany?</string>
+    <string name="awri4a1">Berlin</string>
+
+    <string name="qwri5">Which German CDU politician, also known as Chancellor of the Unity, ruled from 1982 to 1998 as the sixth Chancellor of the Federal Republic of Germany?</string>
+    <string name="awri5a1">Helmut Kohl</string>
+
+    <string name="qwri6">In which country is Dublin?</string>
+    <string name="awri6a1">Irland</string>
+
+    <string name="qwri7">How many countries does the European Union (EU) consist of?</string>
+    <string name="awri7a1">28</string>
+
+    <string name="qwri8">How many planets are in our solar system?</string>
+    <string name="awri8a1">9</string>
+
+    <string name="qwri9">Where is the Broadway?</string>
+    <string name="awri9a1">New York</string>
+
+    <string name="qwri10">How many teeth does a child have (deciduous teeth)?</string>
+    <string name="awri10a1">20</string>
+
 
 </resources>

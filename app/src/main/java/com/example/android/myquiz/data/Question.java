@@ -11,7 +11,6 @@ public class Question {
 
     private String mQuestion;
     private ArrayList<Answer> mAnswers;
-    private int mQuestionType;
 
     public Question(String question) {
         mQuestion = question;

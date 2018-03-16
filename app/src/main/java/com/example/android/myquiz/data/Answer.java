@@ -9,13 +9,9 @@ public class Answer {
     private String mAnswer;
     private boolean mIsRight;
 
-    public Answer(String answer, boolean isRight){
+    public Answer(String answer, boolean isRight) {
         mAnswer = answer;
         mIsRight = isRight;
-    }
-
-    public void setmAnswer(String mAnswer) {
-        this.mAnswer = mAnswer;
     }
 
     public String getAnswer() {

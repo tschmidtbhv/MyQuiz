@@ -1,6 +1,7 @@
 package com.example.android.myquiz.helper;
 
 
+import android.util.Log;
 import android.widget.CompoundButton;
 
 import com.example.android.myquiz.data.Answer;
@@ -26,6 +27,7 @@ public class QuestionHelper {
 
         for (int index : indexesOfRightAnswer) {
             if (index == currentIndex) {
+                Log.v(Question.class.getSimpleName(), "isRight " + index);
                 return true;
             }
         }
@@ -70,9 +72,9 @@ public class QuestionHelper {
 
     /**
      * Check the right answer with the given one
-     * @param givenAnswer
-     * @param question
-     * @return
+     * @param givenAnswer represents the given answer
+     * @param question the original question
+     * @return boolean
      */
     public static boolean checkWritenAnswer(String givenAnswer, Question question){
 
@@ -83,9 +85,7 @@ public class QuestionHelper {
         givenAnswer = givenAnswer.toUpperCase();
 
         //Check the right answer equals the given
-        if(rightAnswer.equals(givenAnswer)){
-            return true;
-        }
+        if(rightAnswer.equals(givenAnswer))return true;
 
         return false;
     }
