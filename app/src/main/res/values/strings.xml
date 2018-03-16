@@ -102,10 +102,10 @@
     <string name="amul7a2">South Atlantic ISRIGHT</string>
     <string name="amul7a3">Mediterranean Sea</string>
 
-    <string name="qmul8">Which presidents ruled in the US?</string>
-    <string name="amul8a1">North Sea ISRIGHT</string>
-    <string name="amul8a2">South Atlantic </string>
-    <string name="amul8a3">Mediterranean Sea ISRIGHT</string>
+    <string name="qmul8">What is the biggest shark on earth?</string>
+    <string name="amul8a1">Whale shark ISRIGHT</string>
+    <string name="amul8a2">Tiger shark </string>
+    <string name="amul8a3">Hammer shark</string>
 
     <string name="qmul9">Which presidents ruled in the US?</string>
     <string name="amul9a1">Roman Herzog</string>
