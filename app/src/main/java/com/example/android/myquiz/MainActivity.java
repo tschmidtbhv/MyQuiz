@@ -1,12 +1,11 @@
 package com.example.android.myquiz;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.example.android.myquiz.helper.ExtraTags;
-import com.example.android.myquiz.helper.TransitionHelper;
+import com.example.android.myquiz.helper.Config;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,12 +15,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void callPlayActivity(View view){
+    public void callPlayActivity(View view) {
         Intent intent = new Intent(MainActivity.this, PlayActivity.class);
-        intent.putExtra(ExtraTags.VARIANTID, view.getId());
+        intent.putExtra(Config.VARIANTID, view.getId());
 
         startActivity(intent);
-        TransitionHelper.animateSlideIn(this);
-
     }
 }
