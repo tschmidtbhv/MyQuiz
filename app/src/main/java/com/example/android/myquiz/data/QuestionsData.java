@@ -24,7 +24,7 @@ public class QuestionsData {
     private final static String ANSWERWRITEPRE = "awri";
 
 
-    private final static int NUMBEROFQUESTIONS = 10;
+    private final static int NUMBEROFQUESTIONS = 3; //Max questions depends on Question input (strings.xml)
     private final static int NUMBEROFPOSSIBLEANSWER = 3;
 
 
